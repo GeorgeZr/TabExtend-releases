@@ -1,0 +1,46 @@
+name: Publish release
+
+on:
+  push:
+    tags: ['v*']
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: 'Existing release tag, for example v0.5.17'
+        required: true
+        type: string
+
+permissions:
+  contents: write
+
+concurrency:
+  group: publish-release
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    if: github.repository == 'GeorgeZr/TabExtend-releases'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      RELEASE_TAG: ${{ inputs.tag || github.ref_name }}
+    steps:
+      - name: Validate tag
+        run: '[[ "$RELEASE_TAG" =~ ^v(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)$ ]]'
+      - name: Check out current publishing tools
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: main
+          persist-credentials: false
+      - name: Test package validation
+        run: python3 -m unittest discover -s tests
+      - name: Read the original package from its tag
+        run: |
+          git fetch origin "refs/tags/$RELEASE_TAG:refs/tags/$RELEASE_TAG"
+          git archive "$RELEASE_TAG" .release | tar -x
+      - name: Validate the extension package
+        run: python3 scripts/verify-package.py "$RELEASE_TAG"
+      - name: Publish download attachments
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python3 scripts/publish-release.py "$RELEASE_TAG"
