@@ -12,8 +12,8 @@ validator = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(validator)
 tag = sys.argv[1]
 metadata = validator.verify(tag)
-repository = os.environ.get("GITHUB_REPOSITORY", "GeorgeZr/TabExtend-releases")
-if repository != "GeorgeZr/TabExtend-releases":
+repository = os.environ.get("GITHUB_REPOSITORY", "blingbling2333/TabExtend-releases")
+if repository != "blingbling2333/TabExtend-releases":
     raise ValueError("Unexpected release repository")
 
 

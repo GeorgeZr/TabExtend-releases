@@ -2,7 +2,7 @@
 
 TabExtend 是一个 Chrome 新标签页扩展，可以用工作区、分类和分组整理常用链接，也支持笔记和待办。
 
-**[下载最新版本](https://github.com/GeorgeZr/TabExtend-releases/releases/latest)** · [所有版本](https://github.com/GeorgeZr/TabExtend-releases/releases)
+**[下载最新版本](https://github.com/blingbling2333/TabExtend-releases/releases/latest)** · [所有版本](https://github.com/blingbling2333/TabExtend-releases/releases)
 
 ## 安装
 
@@ -34,4 +34,4 @@ Windows PowerShell 可使用 `Get-FileHash 文件名.zip -Algorithm SHA256`，�
 
 这里提供经过自动测试和构建的安装包、下载说明及发布工具。源码仓库保持私有。安装包包含浏览器运行所需的编译后 JavaScript 和资源。
 
-发现问题可以在本仓库 [Issues](https://github.com/GeorgeZr/TabExtend-releases/issues) 中反馈，请附上扩展版本、浏览器版本和复现步骤，不要上传账号凭据或私人收藏数据。
+发现问题可以在本仓库 [Issues](https://github.com/blingbling2333/TabExtend-releases/issues) 中反馈，请附上扩展版本、浏览器版本和复现步骤，不要上传账号凭据或私人收藏数据。

@@ -19,7 +19,7 @@ concurrency:
 
 jobs:
   publish:
-    if: github.repository == 'GeorgeZr/TabExtend-releases'
+    if: github.repository == 'blingbling2333/TabExtend-releases'
     runs-on: ubuntu-latest
     timeout-minutes: 10
     env:
